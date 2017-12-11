@@ -1,6 +1,3 @@
-*
-!*.yaml
-!.gitignore
 secrets.yaml
 known_devices.yaml
 *.log
@@ -12,8 +9,4 @@ phue.conf
 .HA_VERSION
 .uuid
 __pycache__
-custom_components/__pycache__
-custom_components/binary_sensor/__pycache__
-custom_components/clinmate/__pycache__
-custom_components/sensor/__pycache__
-custom_components/switch/__pycache__
+*.pyc

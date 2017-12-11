@@ -40,6 +40,17 @@ livingroom:
     - light.shelf_2
     - light.shelf_3
 
+living_lights:
+  name: "Living Lights"
+  entities:
+    - light.couch_mqtt
+    - light.wall_board_mqtt
+    - light.dining_table_mqtt
+    - light.shelf_1
+    - light.shelf_2
+    - light.shelf_3
+
+
 Presets:
   control: hidden
   entities:

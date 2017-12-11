@@ -1,0 +1,144 @@
+######################################
+#Groups
+######################################
+
+family:
+  name: "Awesome People"
+  entities:
+    - device_tracker.24df6a78c050
+    - device_tracker.irwan_angler
+    - device_tracker.lgnexus5x
+    - device_tracker.nexus5xshanell
+    - device_tracker.htconex
+    - device_tracker.iphonen
+    - device_tracker.iphoney
+
+weather_overview:
+  name: Weather
+  entities:
+    - sensor.pws_location
+    - sensor.pws_temp_c
+    - sensor.pws_relative_humidity
+    - sensor.pws_temp_high_1d_c
+    - sensor.pws_temp_low_1d_c
+    - sensor.pws_weather_1h
+
+bookshelves:
+  name: "Bookshelves"
+  entities:
+    - light.shelf_1
+    - light.shelf_2
+    - light.shelf_3
+
+livingroom:
+  name: "Livingroom"
+  entities:
+    - light.couch_mqtt
+    - light.wall_board_mqtt
+    - light.dining_table_mqtt
+    - light.shelf_1
+    - light.shelf_2
+    - light.shelf_3
+
+Presets:
+  control: hidden
+  entities:
+    - script.goodnight
+    - scene.living_lights_low
+    - scene.living_lights_medium
+    - scene.living_lights_bright
+
+office:
+  name: "Office"
+  entities:
+    - light.mancave_mqtt
+    - light.office_ceiling
+
+master:
+  name: "Master"
+  entities:
+    - light.bedside
+
+
+Outside:
+    - switch.front_door_light
+
+toon:
+  name: "Toon"
+  control: hidden
+  entities:
+    - binary_sensor.burner_status
+    - climate.toon_van_eneco
+    - scene.Toon_Comfort
+    - scene.Toon_Home
+    - scene.Toon_Sleep
+    - scene.Toon_Away
+
+
+######################################
+#Views
+######################################
+
+daily_view:
+  name: "Daily Habits"
+  view: yes
+  entities:
+    - group.livingroom
+    - group.presets
+    - group.toon
+    - group.office
+    - group.master
+
+
+livingroom_view:
+  name: "Living Room"
+  view: yes
+  entities:
+    - light.couch_mqtt
+    - light.wall_board_mqtt
+    - light.dining_table_mqtt
+    - light.shelf_1
+    - light.shelf_2
+    - light.shelf_3
+    - group.toon
+    - group.bookshelves
+    - sensor.power_current
+    - sensor.power_today
+    - sensor.gas_current
+    - sensor.gas_today
+    - sensor.illuminance
+    - device_tracker.media01
+    - device_tracker.chromecast
+    - device_tracker.samsung_ue60ku6000
+    - device_tracker.7cdd90e49bb8
+
+######################################
+kitchen_view:
+  name: "Kitchen"
+  view: no
+  entities:
+
+######################################
+office_view:
+  name: "Office"
+  view: yes
+  entities:
+    - light.office_ceiling
+    - light.mancave_mqtt
+    - binary_sensor.mancave_motion
+    - device_tracker.epsonprinter
+
+######################################
+master_view:
+  name: "Master"
+  view: yes
+  entities:
+    - light.bedside
+
+######################################
+outside_view:
+  name: "Outside"
+  view: yes
+  entities:
+    - switch.front_door_light
+    - group.weather_overview

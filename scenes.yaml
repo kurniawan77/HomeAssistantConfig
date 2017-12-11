@@ -1,0 +1,51 @@
+## Living Lights #################
+- name: Living Lights Low
+  entities:
+      group.living_lights:
+          state: on
+          brightness_pct: 25
+      group.bookshelves:
+          state: on
+          brightness_pct: 10
+          xy_color: [ 0.55, 0.39 ]
+          
+- name: Living Lights Medium
+  entities:
+      group.living_lights:
+          state: on
+          brightness_pct: 50
+      group.bookshelves:
+          state: on
+          brightness_pct: 20
+          xy_color: [ 0.57, 0.38 ]
+          
+- name: Living Lights Bright
+  entities:
+      group.living_lights:
+          state: on
+          brightness_pct: 75
+      group.bookshelves:
+          state: on
+          brightness_pct: 80
+          xy_color: [ 0.57, 0.38 ]
+## Toon #########################
+- name: Toon Comfort
+  entities:
+    climate.toon_van_eneco:
+        operation_mode: performance
+
+- name: Toon Sleep
+  entities:
+    climate.toon_van_eneco:
+        operation_mode: cool
+
+- name: Toon Home
+  entities:
+    climate.toon_van_eneco:
+        operation_mode: heat
+
+- name: Toon Away
+  entities:
+    climate.toon_van_eneco:
+        operation_mode: eco
+

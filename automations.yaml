@@ -1,0 +1,131 @@
+#### Turn on living lights in the morning
+- alias: Living lights on in the morning weekdays
+  id: '1505732648831'
+  trigger:
+  - platform: time
+    at: 06:15
+  condition:
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - service: scene.turn_on
+    data:
+      entity_id: scene.living_lights_medium
+
+#### Turn off living lights in the morning
+- alias: Living lights off in the morning
+  id: '1505822781052'
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: 00:45:00
+  condition:
+  - condition: state
+    entity_id: group.living_lights
+    state: 'on'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: group.living_lights
+
+#### Turn on living lights in the evening
+- alias: Living lights on in the evening
+  id: '1505743151295'
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: -00:45:00
+  - platform: state
+    entity_id: group.family
+    to: home
+  condition:
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: time
+    after: '15:00:00'
+    before: '23:59:00'
+  action:
+  - service: scene.turn_on
+    data:
+      entity_id: scene.living_lights_medium
+  - delay: 00:30:00
+  - service: scene.turn_on
+    data:
+      entity_id: scene.living_lights_bright
+
+#### Climate control
+- alias: Climate control
+  id: '1506595010771'
+  trigger:
+  - platform: state
+    entity_id: climate.toon_van_eneco
+    to: Comfort
+  action:
+  - delay: 02:00:00
+  - condition: state
+    entity_id: climate.toon_van_eneco
+    state: Comfort
+  - service: scene.turn_on
+    data:
+       entity_id: scene.toon_home
+
+#### Turn on Mancave light
+- alias: Mancave light on
+  id: 'MancaveLightOn'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.mancave_motion
+    to: 'on'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.mancave_mqtt
+      brightness: 255
+      color_temp: 153
+
+#### Turn off Mancave light
+- alias: Mancave light off
+  id: 'MancaveLightOff'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.mancave_motion
+    to: 'off'
+    for:
+      minutes: 2
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.mancave_mqtt
+
+#### Turn on Front door light
+- alias: Front door light on
+  id: 'FrontDoorLightOn'
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: -00:45:00
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.front_door_light
+
+#### Turn off Front door light
+- alias: Front door light off
+  id: 'FrontDoorLightOff'
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: 00:45:00
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.front_door_light

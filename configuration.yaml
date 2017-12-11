@@ -1,0 +1,287 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 1
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Amsterdam
+  # Customization file
+  customize: !include customize.yaml
+
+
+### Additional Components broken into Seperate yaml files
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+
+### Show links to resources in log and frontend
+#introduction:
+
+
+### Enables the frontend
+frontend:
+  javascript_version: latest
+  themes: !include_dir_merge_named themes/
+
+
+### Enables configuration UI
+config:
+
+
+### Enables frontend security
+http:
+  # Uncomment this to add a password (recommended!)
+  # api_password: PASSWORD
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+
+### Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+
+### Discover some devices automatically
+discovery:
+  ignore:
+    - samsung_tv
+
+
+### Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+
+### History recorder
+recorder:
+  purge_interval: 2
+  purge_keep_days: 7
+
+
+### Enables support for tracking state changes over time
+history:
+  include:
+    domains:
+      - sensor
+      - switch
+      - media_player
+      - light
+      - device_tracker
+      - climate
+      - sun
+  exclude:
+    entities:
+      - sensor.bank_hoek_current_power
+      - sensor.bank_hoek_today_energy
+      - sensor.eet_hoek_current_power
+      - sensor.eet_hoek_today_energy
+      - sensor.tv_hoek_current_power
+      - sensor.tv_hoek_today_energy
+      - sensor.pws_weather_1h
+      - sensor.pws_location
+
+
+### View all events in a logbook
+logbook:
+  include:
+    domains:
+      - automation
+      - sensor
+      - switch
+      - media_player
+      - light
+      - device_tracker
+  exclude:
+    entities:
+      - sensor.bank_hoek_current_power
+      - sensor.bank_hoek_today_energy
+      - sensor.eet_hoek_current_power
+      - sensor.eet_hoek_today_energy
+      - sensor.tv_hoek_current_power
+      - sensor.tv_hoek_today_energy
+      - sensor.pws_weather_1h
+
+
+### Track the sun
+sun:
+
+
+### Text to speech
+tts:
+  - platform: google
+
+### Add additional panels to Home Assistant frontend
+panel_iframe:
+
+### Hass Configurator panel
+#  configurator:
+#    title: 'Editor'
+#    icon: mdi:wrench
+#    url: 'http://192.168.129.115:3218'
+
+### Grafana in Home Assistant
+#  grafana:
+#    title: 'Charts'
+#    icon: mdi:elevation-rise
+#    url: 'http://192.168.129.115:3000/dashboard/db/energy'
+
+
+### Database by influxdb
+#influxdb:
+
+
+### Zone components
+zone:
+  - name: Home
+    latitude: !secret latitude
+    longitude: !secret longitude
+    icon: mdi:home
+    radius: 30  
+    
+  - name: Work
+    latitude: !secret latitude_work
+    longitude: !secret longitude_work
+    icon: mdi:factory
+    radius: 200
+
+
+### Light components
+light:
+
+  - platform: hue
+    host: 192.168.129.110
+    allow_unreachable: true
+    allow_hue_groups: false
+
+  - name: "Couch MQTT"
+    command_topic: milight/cmnd/0x5712/rgbw/1
+    state_topic: milight/stat/0x5712/rgbw/1
+    # Use a YAML anchor for common settings so we can just reference
+    # them for other lights.
+    <<: &MILIGHT_PARAMS
+      platform: mqtt_json
+      rgb: true
+      brightness: true
+      
+  - name: "Wall Board MQTT"
+    command_topic: milight/cmnd/0x5712/rgbw/2
+    state_topic: milight/stat/0x5712/rgbw/2
+    <<: *MILIGHT_PARAMS
+
+  - name: "Dining Table MQTT"
+    command_topic: milight/cmnd/0x5712/rgbw/3
+    state_topic: milight/stat/0x5712/rgbw/3
+    <<: *MILIGHT_PARAMS
+
+  - name: "Mancave MQTT"
+    command_topic: milight/cmnd/0x1081/rgb_cct/4
+    state_topic: milight/stat/0x1081/rgb_cct/4
+    platform: mqtt_json
+    color_temp: true
+    brightness: true
+
+
+
+### Switch components
+switch:
+
+  - platform: mqtt
+    name: "Front Door Light"
+    state_topic: "stat/sonoff/POWER"
+    command_topic: "cmnd/sonoff/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+
+### Sensor's components
+sensor:
+
+#  - platform: yr
+
+  - platform: systemmonitor
+    resources:
+      - type: processor_use
+      - type: disk_use_percent
+        arg: /
+      - type: memory_use_percent
+
+  - platform: wunderground
+    api_key: 99dd9c13d768af8e
+    pws_id: IFROOSTE3
+    monitored_conditions:
+      - location
+      - temp_c
+      - relative_humidity
+      - temp_high_1d_c
+      - temp_low_1d_c
+      - weather_1h
+
+  - platform: mqtt
+    name: "illuminance"
+    state_topic: "tele/wemosta/SENSOR"
+    value_template: "{{ value_json.BH1750.Illuminance }}"
+    unit_of_measurement: "lx"
+
+
+binary_sensor:
+  - platform: mqtt
+    state_topic: "cmnd/motion/mancave/POWER4"
+    name: "Mancave Motion"
+    qos: 0
+    payload_on: "ON"
+    payload_off: "OFF"
+
+
+## Toon custom component
+toon:
+    username: !secret toon_username
+    password: !secret toon_password
+
+
+### Media player component
+#media_player:
+#  - platform: samsungtv
+#    host: 192.168.129.20
+#    port: 8001
+#    mac: b8:bb:af:de:0f:36
+#    name: Living Room TV
+#    timeout: 8
+
+
+### MQTT broker connection
+mqtt:
+  broker: 192.168.129.115
+  port: 1883
+  client_id: hassbian
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+
+### Network devices tracking
+device_tracker:
+  - platform: owntracks
+
+  - platform: asuswrt
+    host: 192.168.129.1
+    username: !secret asuswrt_username
+    password: !secret asuswrt_password
+    track_new_devices: false
+
+
+input_boolean:
+  mancave_motion:
+    name: Mancave Motion
+    initial: off

@@ -1,0 +1,53 @@
+group.all_lights:
+  friendly_name: All Lights
+  hidden: true
+sensor.bank_hoek_current_power:
+  hidden: true
+sensor.bank_hoek_today_energy:
+  hidden: true
+sensor.tv_hoek_current_power:
+  hidden: true
+sensor.tv_hoek_today_energy:
+  hidden: true
+light.mancave:
+  hidden: true
+light.mancave_mqtt:
+  friendly_name: Mancave
+device_tracker.24df6a78c050:
+  icon: mdi:cellphone
+light.dining_table:
+  hidden: true
+light.dining_table_mqtt:
+  friendly_name: Dining Table
+binary_sensor.mancave_motion:
+  device_class: motion
+light.couch:
+  hidden: true
+light.couch_mqtt:
+  friendly_name: Couch
+light.wall_board:
+  hidden: true
+light.wall_board_mqtt:
+  friendly_name: Wall Board
+scene.toon_away:
+  friendly_name: Away
+  icon: mdi:logout
+scene.toon_sleep:
+  friendly_name: Sleep
+  icon: mdi:sleep
+scene.toon_home:
+  friendly_name: Home
+  icon: mdi:home-assistant
+scene.toon_comfort:
+  friendly_name: Comfort
+  icon: mdi:sofa
+binary_sensor.burner_status:
+  friendly_name: Burner
+script.goodnight:
+  icon: mdi:hotel
+scene.living_lights_low:
+  icon: mdi:brightness-5
+scene.living_lights_medium:
+  icon: mdi:brightness-6
+scene.living_lights_bright:
+  icon: mdi:brightness-7

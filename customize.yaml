@@ -51,3 +51,9 @@ scene.living_lights_medium:
   icon: mdi:brightness-6
 scene.living_lights_bright:
   icon: mdi:brightness-7
+sensor.cresta_2a01_bat:
+  hidden: true
+sensor.cresta_2301_bat:
+  hidden: true
+sensor.xiron_1e01_bat:
+  hidden: true

@@ -235,6 +235,34 @@ sensor:
     value_template: "{{ value_json.BH1750.Illuminance }}"
     unit_of_measurement: "lx"
 
+  - platform: rflink
+    devices:
+      alectov4_58a8_temp:
+        name: Office Temperature
+        sensor_type: temperature
+      alectov4_58a8_hum:
+        name: Office Humidity
+        sensor_type: humidity
+      xiron_1e01_temp:
+        name: Bathroom Temperature
+        sensor_type: temperature
+      xiron_1e01_hum:
+        name: Bathroom Humidity
+        sensor_type: humidity
+      cresta_2301_temp:
+        name: Kitchen Temperature
+        sensor_type: temperature
+      cresta_2301_hum:
+        name: Kitchen Humidity
+        sensor_type: humidity
+      cresta_2a01_temp:
+        name: Master Temperature
+        sensor_type: temperature
+      cresta_2a01_hum:
+        name: Master Humidity
+        sensor_type: humidity
+
+
 
 binary_sensor:
   - platform: mqtt
@@ -279,6 +307,11 @@ device_tracker:
     username: !secret asuswrt_username
     password: !secret asuswrt_password
     track_new_devices: false
+
+
+rflink:
+  port: /dev/ttyUSB0
+
 
 
 input_boolean:

@@ -126,8 +126,11 @@ livingroom_view:
 ######################################
 kitchen_view:
   name: "Kitchen"
-  view: no
+  view: yes
   entities:
+    - sensor.kitchen_temperature
+    - sensor.kitchen_humidity
+
 
 ######################################
 office_view:
@@ -138,13 +141,29 @@ office_view:
     - light.mancave_mqtt
     - binary_sensor.mancave_motion
     - device_tracker.epsonprinter
+    - sensor.office_temperature
+    - sensor.office_humidity
 
 ######################################
+bathroom_view:
+  name: "Bathroom"
+  view: yes
+  entities:
+    - sensor.bathroom_temperature
+    - sensor.bathroom_humidity
+
+
+######################################
+
+
 master_view:
   name: "Master"
   view: yes
   entities:
     - light.bedside
+    - sensor.master_temperature
+    - sensor.master_humidity
+
 
 ######################################
 outside_view:

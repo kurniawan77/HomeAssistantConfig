@@ -55,8 +55,8 @@ updater:
 
 ### Discover some devices automatically
 discovery:
-  ignore:
-    - samsung_tv
+#  ignore:
+#    - samsung_tv
 
 
 ### Allows you to issue voice commands from the frontend in enabled browsers
@@ -306,11 +306,14 @@ device_tracker:
     host: 192.168.129.1
     username: !secret asuswrt_username
     password: !secret asuswrt_password
-    track_new_devices: false
+    track_new_devices: true
 
 
 rflink:
   port: /dev/ttyUSB0
+  ignore_devices:
+    - auriol_008a
+    - bl999_0218
 
 
 

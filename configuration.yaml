@@ -159,11 +159,6 @@ zone:
 ### Light components
 light:
 
-  - platform: hue
-    host: 192.168.129.110
-    allow_unreachable: true
-    allow_hue_groups: false
-
   - name: "Couch MQTT"
     command_topic: milight/cmnd/0x5712/rgbw/1
     state_topic: milight/stat/0x5712/rgbw/1
@@ -277,6 +272,15 @@ binary_sensor:
 toon:
     username: !secret toon_username
     password: !secret toon_password
+
+
+hue:
+  bridges:
+    - host: 192.168.129.110
+      filename: phue.conf
+      allow_unreachable: true
+      allow_hue_groups: false
+
 
 
 ### Media player component

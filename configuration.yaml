@@ -55,8 +55,8 @@ updater:
 
 ### Discover some devices automatically
 discovery:
-#  ignore:
-#    - samsung_tv
+  ignore:
+    - samsung_tv
 
 
 ### Allows you to issue voice commands from the frontend in enabled browsers
@@ -131,14 +131,27 @@ panel_iframe:
 #    url: 'http://192.168.129.115:3218'
 
 ### Grafana in Home Assistant
-#  grafana:
-#    title: 'Charts'
-#    icon: mdi:elevation-rise
-#    url: 'http://192.168.129.115:3000/dashboard/db/energy'
+  grafana:
+    title: 'Charts'
+    icon: mdi:elevation-rise
+    url: 'http://borg.local:3000/dashboard/db/ha'
 
 
 ### Database by influxdb
-#influxdb:
+influxdb:
+  host: borg.local
+  exclude:
+    domains:
+      - automation
+      - device_tracker
+      - group
+      - light
+      - media_player
+      - scene
+      - script
+      - switch
+      - sun
+      - zone
 
 
 ### Zone components
@@ -316,8 +329,9 @@ device_tracker:
 rflink:
   port: /dev/ttyUSB0
   ignore_devices:
-    - auriol_008a
-    - bl999_0218
+    - auriol_008a_*
+    - bl999_0218_*
+    - fineoffset_0000_*
 
 
 

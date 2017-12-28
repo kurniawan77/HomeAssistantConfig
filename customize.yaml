@@ -15,8 +15,7 @@ light.mancave_mqtt:
   friendly_name: Mancave
 device_tracker.24df6a78c050:
   icon: mdi:cellphone
-light.dining_table:
-  hidden: true
+light.dining_table: {}
 light.dining_table_mqtt:
   friendly_name: Dining Table
 binary_sensor.mancave_motion:

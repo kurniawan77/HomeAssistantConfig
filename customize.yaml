@@ -56,3 +56,34 @@ sensor.cresta_2301_bat:
   hidden: true
 sensor.xiron_1e01_bat:
   hidden: true
+group.all_automations:
+  hidden: false
+group.all_devices:
+  hidden: false
+group.all_scripts:
+  hidden: false
+device_tracker.desktop2m662m4:
+  friendly_name: Dell XPS15
+  icon: mdi:laptop
+device_tracker.chromecast:
+  icon: mdi:cast
+device_tracker.epsonprinter:
+  icon: mdi:printer
+device_tracker.7cdd90e49bb8:
+  icon: mdi:television-box
+device_tracker.latituded630:
+  icon: mdi:laptop
+device_tracker.media01:
+  icon: mdi:kodi
+device_tracker.android49dd192209c55554:
+  icon: mdi:tablet
+device_tracker.skynet_2:
+  icon: mdi:windows
+device_tracker.samsung_ue60ku6000:
+  icon: mdi:youtube-tv
+device_tracker.borg:
+  icon: mdi:ubuntu
+device_tracker.raspberrypi:
+  icon: mdi:raspberrypi
+device_tracker.elitebook:
+  icon: mdi:laptop

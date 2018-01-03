@@ -14,7 +14,7 @@ family:
     - device_tracker.iphoney
 
 weather_overview:
-  name: Weather
+  name: Wunderground
   entities:
     - sensor.pws_location
     - sensor.pws_temp_c
@@ -55,9 +55,9 @@ Presets:
   control: hidden
   entities:
     - script.goodnight
-    - scene.living_lights_low
-    - scene.living_lights_medium
     - scene.living_lights_bright
+    - scene.living_lights_medium
+    - scene.living_lights_low
 
 office:
   name: "Office"
@@ -85,12 +85,17 @@ toon:
     - scene.Toon_Sleep
     - scene.Toon_Away
 
+Energy:
+    - sensor.power_current
+    - sensor.power_today
+    - sensor.gas_current
+    - sensor.gas_today
 
 ######################################
 #Views
 ######################################
 
-daily_view:
+default_view:
   name: "Daily Habits"
   view: yes
   entities:
@@ -99,8 +104,21 @@ daily_view:
     - group.toon
     - group.office
     - group.master
+    - device_tracker.irwan_angler
+    - device_tracker.lgnexus5x
+    - device_tracker.nexus5xshanell
+    - device_tracker.htconex
+    - device_tracker.elitebook
+    - device_tracker.iphonen
+    - device_tracker.iphoney
+    - device_tracker.android49dd192209c55554
+    - device_tracker.latituded630
+    - device_tracker.desktop2m662m4
+    - camera.buienradar
 
 
+
+######################################
 livingroom_view:
   name: "Living Room"
   view: yes
@@ -113,11 +131,9 @@ livingroom_view:
     - light.shelf_3
     - group.toon
     - group.bookshelves
-    - sensor.power_current
-    - sensor.power_today
-    - sensor.gas_current
-    - sensor.gas_today
     - sensor.illuminance
+    - sensor.livingroom_temperature
+    - sensor.livingroom_humidity
     - device_tracker.media01
     - device_tracker.chromecast
     - device_tracker.samsung_ue60ku6000
@@ -154,8 +170,6 @@ bathroom_view:
 
 
 ######################################
-
-
 master_view:
   name: "Master"
   view: yes
@@ -172,3 +186,17 @@ outside_view:
   entities:
     - switch.front_door_light
     - group.weather_overview
+
+
+######################################
+system_view:
+  name: "System"
+  view: yes
+  icon: mdi:settings
+  entities:
+    - group.all_automations
+    - group.all_scripts
+    - group.energy
+    - device_tracker.borg
+    - device_tracker.skynet_2
+    - device_tracker.raspberrypi

@@ -66,7 +66,7 @@ conversation:
 ### History recorder
 recorder:
   purge_interval: 2
-  purge_keep_days: 7
+  purge_keep_days: 5
 
 
 ### Enables support for tracking state changes over time
@@ -140,18 +140,23 @@ panel_iframe:
 ### Database by influxdb
 influxdb:
   host: borg.local
-  exclude:
+  include:
     domains:
-      - automation
-      - device_tracker
-      - group
-      - light
-      - media_player
-      - scene
-      - script
-      - switch
-      - sun
-      - zone
+     - sensor
+     - binary_sensor
+     - climate
+#  exclude:
+#    domains:
+#      - automation
+#      - device_tracker
+#      - group
+#      - light
+#      - media_player
+#      - scene
+#      - script
+#      - switch
+#      - sun
+#      - zone
 
 
 ### Zone components
@@ -226,6 +231,12 @@ sensor:
         arg: /
       - type: memory_use_percent
 
+  - platform: buienradar
+    monitored_conditions:
+      - humidity
+      - temperature
+
+
   - platform: wunderground
     api_key: 99dd9c13d768af8e
     pws_id: IFROOSTE3
@@ -251,6 +262,12 @@ sensor:
       alectov4_58a8_hum:
         name: Office Humidity
         sensor_type: humidity
+      alectov4_5c98_temp:
+        name: Livingroom Temperature
+        sensor_type: temperature
+      alectov4_5c98_hum:
+        name: Livingroom Humidity
+        sensor_type: humidity
       xiron_1e01_temp:
         name: Bathroom Temperature
         sensor_type: temperature
@@ -271,7 +288,6 @@ sensor:
         sensor_type: humidity
 
 
-
 binary_sensor:
   - platform: mqtt
     state_topic: "cmnd/motion/mancave/POWER4"
@@ -281,7 +297,14 @@ binary_sensor:
     payload_off: "OFF"
 
 
-## Toon custom component
+### Camera images component
+camera:
+  - platform: generic
+    name: buienradar
+    still_image_url: https://api.buienradar.nl/image/1.0/RadarMapNL?w=700&h=765
+
+
+### Toon custom component
 toon:
     username: !secret toon_username
     password: !secret toon_password
@@ -332,10 +355,3 @@ rflink:
     - auriol_008a_*
     - bl999_0218_*
     - fineoffset_0000_*
-
-
-
-input_boolean:
-  mancave_motion:
-    name: Mancave Motion
-    initial: off

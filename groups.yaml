@@ -13,16 +13,6 @@ family:
     - device_tracker.iphonen
     - device_tracker.iphoney
 
-weather_overview:
-  name: Wunderground
-  entities:
-    - sensor.pws_location
-    - sensor.pws_temp_c
-    - sensor.pws_relative_humidity
-    - sensor.pws_temp_high_1d_c
-    - sensor.pws_temp_low_1d_c
-    - sensor.pws_weather_1h
-
 bookshelves:
   name: "Bookshelves"
   entities:
@@ -85,7 +75,7 @@ toon:
     - scene.Toon_Sleep
     - scene.Toon_Away
 
-Energy:
+Usage:
     - sensor.power_current
     - sensor.power_today
     - sensor.gas_current
@@ -104,6 +94,7 @@ default_view:
     - group.toon
     - group.office
     - group.master
+    - camera.buienradar
     - device_tracker.irwan_angler
     - device_tracker.lgnexus5x
     - device_tracker.nexus5xshanell
@@ -114,8 +105,6 @@ default_view:
     - device_tracker.android49dd192209c55554
     - device_tracker.latituded630
     - device_tracker.desktop2m662m4
-    - camera.buienradar
-
 
 
 ######################################
@@ -185,7 +174,7 @@ outside_view:
   view: yes
   entities:
     - switch.front_door_light
-    - group.weather_overview
+
 
 
 ######################################
@@ -196,7 +185,9 @@ system_view:
   entities:
     - group.all_automations
     - group.all_scripts
-    - group.energy
+    - group.all_devices
+    - group.usage
     - device_tracker.borg
     - device_tracker.skynet_2
     - device_tracker.raspberrypi
+    - device_tracker.hassbian

@@ -80,16 +80,6 @@ history:
       - device_tracker
       - climate
       - sun
-  exclude:
-    entities:
-      - sensor.bank_hoek_current_power
-      - sensor.bank_hoek_today_energy
-      - sensor.eet_hoek_current_power
-      - sensor.eet_hoek_today_energy
-      - sensor.tv_hoek_current_power
-      - sensor.tv_hoek_today_energy
-      - sensor.pws_weather_1h
-      - sensor.pws_location
 
 
 ### View all events in a logbook
@@ -102,15 +92,6 @@ logbook:
       - media_player
       - light
       - device_tracker
-  exclude:
-    entities:
-      - sensor.bank_hoek_current_power
-      - sensor.bank_hoek_today_energy
-      - sensor.eet_hoek_current_power
-      - sensor.eet_hoek_today_energy
-      - sensor.tv_hoek_current_power
-      - sensor.tv_hoek_today_energy
-      - sensor.pws_weather_1h
 
 
 ### Track the sun
@@ -121,9 +102,9 @@ sun:
 tts:
   - platform: google
 
+
 ### Add additional panels to Home Assistant frontend
 panel_iframe:
-
 ### Hass Configurator panel
 #  configurator:
 #    title: 'Editor'
@@ -145,18 +126,7 @@ influxdb:
      - sensor
      - binary_sensor
      - climate
-#  exclude:
-#    domains:
-#      - automation
-#      - device_tracker
-#      - group
-#      - light
-#      - media_player
-#      - scene
-#      - script
-#      - switch
-#      - sun
-#      - zone
+
 
 
 ### Zone components
@@ -236,18 +206,6 @@ sensor:
       - humidity
       - temperature
 
-
-  - platform: wunderground
-    api_key: 99dd9c13d768af8e
-    pws_id: IFROOSTE3
-    monitored_conditions:
-      - location
-      - temp_c
-      - relative_humidity
-      - temp_high_1d_c
-      - temp_low_1d_c
-      - weather_1h
-
   - platform: mqtt
     name: "illuminance"
     state_topic: "tele/wemosta/SENSOR"
@@ -268,10 +226,10 @@ sensor:
       alectov4_5c98_hum:
         name: Livingroom Humidity
         sensor_type: humidity
-      xiron_1e01_temp:
+      xiron_7701_temp:
         name: Bathroom Temperature
         sensor_type: temperature
-      xiron_1e01_hum:
+      xiron_7701_hum:
         name: Bathroom Humidity
         sensor_type: humidity
       cresta_2301_temp:
@@ -318,7 +276,6 @@ hue:
       allow_hue_groups: false
 
 
-
 ### Media player component
 #media_player:
 #  - platform: samsungtv
@@ -348,7 +305,7 @@ device_tracker:
     password: !secret asuswrt_password
     track_new_devices: true
 
-
+### 433Mhz RF Bridge 
 rflink:
   port: /dev/ttyUSB0
   ignore_devices:

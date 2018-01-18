@@ -24,6 +24,9 @@ scene: !include scenes.yaml
 ### Show links to resources in log and frontend
 #introduction:
 
+### Enables python scripts as service
+python_script:
+
 
 ### Enables the frontend
 frontend:
@@ -37,10 +40,12 @@ config:
 
 ### Enables frontend security
 http:
-  # Uncomment this to add a password (recommended!)
-  # api_password: PASSWORD
-  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  # base_url: example.duckdns.org:8123
+  api_password: !secret http_password
+  trusted_networks: !secret trusted_networks
+  ssl_certificate: !secret ssl_cert
+  ssl_key: !secret ssl_key
+  ip_ban_enabled: True
+  login_attempts_threshold: 10
 
 
 ### Checks for available updates
@@ -266,6 +271,8 @@ camera:
 toon:
     username: !secret toon_username
     password: !secret toon_password
+    consumer_key: !secret toon_consumer_key
+    consumer_secret: !secret toon_consumer_secret
 
 
 hue:

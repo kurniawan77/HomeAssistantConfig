@@ -304,7 +304,7 @@ mqtt:
 
 ### Network devices tracking
 device_tracker:
-  - platform: owntracks
+  - platform: owntracks_http
 
   - platform: asuswrt
     host: 192.168.129.1

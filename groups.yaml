@@ -40,11 +40,18 @@ living_lights:
     - light.shelf_2
     - light.shelf_3
 
+living_mi_lights:
+  name: "Living MiLights"
+  entities:
+    - light.couch_mqtt
+    - light.wall_board_mqtt
+    - light.dining_table_mqtt
 
 Presets:
   control: hidden
   entities:
     - script.goodnight
+    - scene.living_lights_lottes_mood
     - scene.living_lights_bright
     - scene.living_lights_medium
     - scene.living_lights_low
@@ -173,7 +180,10 @@ outside_view:
   name: "Outside"
   view: yes
   entities:
-    - switch.front_door_light
+  - sun.sun
+  - sensor.br_temperature
+  - sensor.br_humidity
+  - switch.front_door_light
 
 
 

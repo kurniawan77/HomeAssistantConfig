@@ -1,9 +1,10 @@
 ## Living Lights #################
 - name: Living Lights Low
   entities:
-      group.living_lights:
+      group.living_mi_lights:
           state: on
           brightness_pct: 25
+          color_name: white
       group.bookshelves:
           state: on
           brightness_pct: 10
@@ -11,9 +12,10 @@
           
 - name: Living Lights Medium
   entities:
-      group.living_lights:
+      group.living_mi_lights:
           state: on
           brightness_pct: 50
+          color_name: white
       group.bookshelves:
           state: on
           brightness_pct: 20
@@ -21,13 +23,33 @@
           
 - name: Living Lights Bright
   entities:
-      group.living_lights:
+      group.living_mi_lights:
           state: on
-          brightness_pct: 75
+          brightness_pct: 80
+          color_name: white
       group.bookshelves:
           state: on
           brightness_pct: 80
           xy_color: [ 0.57, 0.38 ]
+          
+- name: Living Lights Lotte's Mood
+  entities:
+      light.couch_mqtt:
+          state: on
+          brightness_pct: 30
+          color_name: white
+      light.wallboard_mqtt:
+          state: on
+          brightness_pct: 80
+          color_name: white
+      light.dining_table_mqtt:
+          state: on
+          brightness_pct: 30
+          rgb_color: [255,0,250]
+      group.bookshelves:
+          state: on
+          brightness_pct: 20
+          rgb_color: [250,70,250]
 ## Toon #########################
 - name: Toon Comfort
   entities:

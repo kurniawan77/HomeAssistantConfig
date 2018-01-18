@@ -40,18 +40,18 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
                                         'gas-cylinder',
                                         'M3')])
 
-#    for plug in _toon_main.toon.smartplugs:
-#        sensor_items.extend([
-#            SmartPlug(hass,
-#                      '{}_current_power'.format(plug.name),
-#                      plug.name,
-#                      'power-socket-eu',
-#                      'Watt'),
-#            SmartPlug(hass,
-#                      '{}_today_energy'.format(plug.name),
-#                      plug.name,
-#                      'power-socket-eu',
-#                      'kWh')])
+    for plug in _toon_main.toon.smartplugs:
+        sensor_items.extend([
+            SmartPlug(hass,
+                      '{}_current_power'.format(plug.name),
+                      plug.name,
+                      'power-socket-eu',
+                      'Watt'),
+            SmartPlug(hass,
+                      '{}_today_energy'.format(plug.name),
+                      plug.name,
+                      'power-socket-eu',
+                      'kWh')])
 
     if _toon_main.toon.solar.produced or _toon_main.solar:
         sensor_items.extend([

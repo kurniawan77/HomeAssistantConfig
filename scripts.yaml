@@ -2,51 +2,56 @@ hue_strips_warm:
   alias: Hue Strips Warm
   sequence:
   - alias: Turn hue to warm
+    service: light.turn_on
     data:
-      brightness: 50
       entity_id: group.bookshelves
+      brightness: 50
       xy_color:
       - 0.57
       - 0.38
-    service: light.turn_on
+
 strip3_warm_white:
   alias: Strip3 Warm White
   sequence:
   - alias: Set strip 3 to warm white
+    service: light.turn_on
     data:
-      brightness_pct: 50
       entity_id: light.shelf_3
+      brightness_pct: 50
       xy_color:
       - 0.57
       - 0.38
-    service: light.turn_on
   - alias: Turn off other two strips
+    service: light.turn_off
     data:
       entity_id:
-      - light.shelf_2
-      - light.shelf_1
-    service: light.turn_off
+        - light.shelf_2
+        - light.shelf_1
+
 goodnight:
   alias: Goodnight
   sequence:
-  - data:
+  - service: scene.turn_on
+    data:
       entity_id: scene.living_lights_low
-    service: scene.turn_on
-  - data:
+  - service: climate.set_operation_mode
+    data:
       entity_id: climate.toon_van_eneco
       operation_mode: eco
-    service: climate.set_operation_mode
   - delay: 00:03:00
-  - data:
-      entity_id: group.living_lights
-    service: light.turn_off
+  - service: light.turn_off
+    data:
+      entity_id: 
+        - group.living_lights
+
+
 '1511204946563':
   alias: Hue strips warm 02
   sequence:
-  - data:
-      brightness: 207
+    service: light.turn_on
+    data:
       entity_id: group.bookshelves
+      brightness: 207
       xy_color:
       - 0.56
       - 0.39
-    service: light.turn_on

@@ -5,7 +5,7 @@ known_devices.yaml
 www
 tts
 deps
-phue.conf
+*.conf
 .HA_VERSION
 .uuid
 __pycache__

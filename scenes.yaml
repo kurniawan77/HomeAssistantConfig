@@ -38,7 +38,7 @@
           state: on
           brightness_pct: 30
           color_name: white
-      light.wallboard_mqtt:
+      light.wall_board_mqtt:
           state: on
           brightness_pct: 80
           color_name: white

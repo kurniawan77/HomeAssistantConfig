@@ -56,7 +56,7 @@ group.all_devices:
 group.all_scripts:
   hidden: false
 device_tracker.desktop2m662m4:
-  friendly_name: Dell XPS15
+  friendly_name: Dell XPS-15
   icon: mdi:laptop
 device_tracker.chromecast:
   icon: mdi:cast
@@ -80,3 +80,8 @@ device_tracker.raspberrypi:
   icon: mdi:raspberrypi
 device_tracker.elitebook:
   icon: mdi:laptop
+device_tracker.desktoptu3b7ps:
+  friendly_name: Lenovo YOGA
+  icon: mdi:laptop
+device_tracker.hassbian:
+  icon: mdi:raspberrypi

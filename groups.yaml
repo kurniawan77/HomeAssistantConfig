@@ -112,6 +112,7 @@ default_view:
     - device_tracker.android49dd192209c55554
     - device_tracker.latituded630
     - device_tracker.desktop2m662m4
+    - device_tracker.desktoptu3b7ps
 
 
 ######################################

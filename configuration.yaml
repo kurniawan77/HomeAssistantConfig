@@ -48,6 +48,13 @@ http:
   login_attempts_threshold: 10
 
 
+notify:
+  - name: Chrome
+    platform: html5
+    gcm_api_key: !secret gcm_server_key
+    gcm_sender_id: !secret gcm_sender_id
+
+
 ### Checks for available updates
 # Note: This component will send some information about your system to
 # the developers to assist with development of Home Assistant.

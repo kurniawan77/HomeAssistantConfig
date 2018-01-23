@@ -129,3 +129,52 @@
   - service: switch.turn_off
     data:
       entity_id: switch.front_door_light
+
+#### Notify new Home Assistant release
+- alias: Update notification
+  id: 'updatenotification'
+  trigger:
+    - platform: state
+      entity_id: updater.updater
+  action:
+  - service: notify.html5
+    data_template: 
+      title: 'New Home Assistant Release'
+      target: 'irwan angler'
+      message: "Home Assistant  {{ states.updater.updater.state }}  is now available."
+
+#### Notify Master light still on
+- alias: Notify Master light
+  id: 'NotifyMasterlight'
+  trigger:
+  - platform: state
+    entity_id: light.bedside
+    to: 'on'
+  action:
+  - delay: 00:05:00
+  - condition: state
+    entity_id: light.bedside
+    state: 'on'
+  - service: notify.html5
+    data:
+       message: Bedside light still on
+       data:
+         actions:
+         - action: open
+           icon: "/static/icons/favicon-192x192.png"
+           title: Open Home Assistant
+         - action: bedside_off
+           title: Turn off light
+
+#### Notification action bedside
+- alias: Notification action Bedside
+  id: 'NotificationActionBedside'
+  trigger:
+  - platform: event
+    event_type: html5_notification.clicked
+    event_data:
+      action: bedside_off
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.bedside

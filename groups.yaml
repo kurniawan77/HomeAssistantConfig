@@ -88,6 +88,20 @@ Usage:
     - sensor.gas_current
     - sensor.gas_today
 
+Climate:
+    - sensor.br_temperature
+    - sensor.br_humidity
+    - sensor.livingroom_temperature
+    - sensor.livingroom_humidity
+    - sensor.kitchen_temperature
+    - sensor.kitchen_humidity
+    - sensor.office_temperature
+    - sensor.office_humidity
+    - sensor.bathroom_temperature
+    - sensor.bathroom_humidity
+    - sensor.master_temperature
+    - sensor.master_humidity
+
 ######################################
 #Views
 ######################################
@@ -194,10 +208,11 @@ system_view:
   view: yes
   icon: mdi:settings
   entities:
-    - group.all_automations
-    - group.all_scripts
     - group.all_devices
     - group.usage
+    - group.climate
+    - group.all_automations
+    - group.all_scripts
     - device_tracker.borg
     - device_tracker.skynet_2
     - device_tracker.raspberrypi

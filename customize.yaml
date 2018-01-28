@@ -1,6 +1,14 @@
 group.all_lights:
   friendly_name: All Lights
   hidden: true
+group.all_automations:
+  hidden: false
+group.all_devices:
+  hidden: false
+group.all_scripts:
+  hidden: false
+group.all_switches:
+  hidden: false
 light.mancave:
   hidden: true
 light.mancave_mqtt:
@@ -43,18 +51,6 @@ scene.living_lights_medium:
   icon: mdi:brightness-6
 scene.living_lights_bright:
   icon: mdi:brightness-7
-sensor.cresta_2a01_bat:
-  hidden: true
-sensor.cresta_2301_bat:
-  hidden: true
-sensor.xiron_1e01_bat:
-  hidden: true
-group.all_automations:
-  hidden: false
-group.all_devices:
-  hidden: false
-group.all_scripts:
-  hidden: false
 device_tracker.desktop2m662m4:
   friendly_name: Dell XPS-15
   icon: mdi:laptop
@@ -85,3 +81,5 @@ device_tracker.desktoptu3b7ps:
   icon: mdi:laptop
 device_tracker.hassbian:
   icon: mdi:raspberrypi
+light.kitchen_ceiling_level:
+  friendly_name: Pendant Lights

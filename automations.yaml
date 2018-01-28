@@ -137,11 +137,10 @@
     - platform: state
       entity_id: updater.updater
   action:
-  - service: notify.html5
-    data_template: 
+  - service: persistent_notification.create
+    data: 
       title: 'New Home Assistant Release'
-      target: 'irwan angler'
-      message: "Home Assistant  {{ states.updater.updater.state }}  is now available."
+      message: 'Home Assistant  {{ states.updater.updater.state }}  is now available.'
 
 #### Notify Master light still on
 - alias: Notify Master light
@@ -151,13 +150,13 @@
     entity_id: light.bedside
     to: 'on'
   action:
-  - delay: 00:05:00
+  - delay: 02:00:00
   - condition: state
     entity_id: light.bedside
     state: 'on'
   - service: notify.html5
     data:
-       message: Bedside light still on
+       message: '{{ as_timestamp(now()) | timestamp_custom(''%H:%M'', true) }} - Bedside light is still on.'
        data:
          actions:
          - action: open
@@ -178,3 +177,25 @@
   - service: light.turn_off
     data:
       entity_id: light.bedside
+
+#### Notification when a new devices connects to wifi
+- alias: Notify for new devices
+  id: 'NotifyNewDevices'
+  trigger:
+    platform: event
+    event_type: device_tracker_new_device
+  action:
+  - service: notify.html5
+    data_template:
+      message: >
+        New device:
+        {{trigger.event.data.host_name}}
+        ({{trigger.event.data.entity_id}})
+      title: New device tracked
+  - service: persistent_notification.create
+    data_template:
+      message: >
+        New device:
+        {{trigger.event.data.host_name}}
+        ({{trigger.event.data.entity_id}})
+      title: New device tracked

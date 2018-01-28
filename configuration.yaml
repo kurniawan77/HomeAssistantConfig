@@ -77,8 +77,8 @@ conversation:
 
 ### History recorder
 recorder:
-  purge_interval: 2
-  purge_keep_days: 5
+  purge_interval: 1
+  purge_keep_days: 3
 
 
 ### Enables support for tracking state changes over time
@@ -238,24 +238,33 @@ sensor:
       alectov4_5c98_hum:
         name: Livingroom Humidity
         sensor_type: humidity
-      xiron_7701_temp:
+      xiron_4b01_temp:
         name: Bathroom Temperature
         sensor_type: temperature
-      xiron_7701_hum:
+      xiron_4b01_hum:
         name: Bathroom Humidity
         sensor_type: humidity
+      xiron_4b01_bat:
+        name: Temp/Hum sensor Bathroom
+        sensor_type: battery
       cresta_2301_temp:
         name: Kitchen Temperature
         sensor_type: temperature
       cresta_2301_hum:
         name: Kitchen Humidity
         sensor_type: humidity
+      cresta_2301_bat:
+        name: Temp/Hum sensor Kitchen
+        sensor_type: battery
       cresta_2a01_temp:
         name: Master Temperature
         sensor_type: temperature
       cresta_2a01_hum:
         name: Master Humidity
         sensor_type: humidity
+      cresta_2a01_bat:
+        name: Temp/Hum sensor Master
+        sensor_type: battery
 
 
 binary_sensor:
@@ -326,3 +335,9 @@ rflink:
     - auriol_008a_*
     - bl999_0218_*
     - fineoffset_0000_*
+    - digitech_0098_*
+
+
+### Z-Wave component
+zwave:
+  usb_path: /dev/ttyACM1

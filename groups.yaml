@@ -26,9 +26,7 @@ livingroom:
     - light.couch_mqtt
     - light.wall_board_mqtt
     - light.dining_table_mqtt
-    - light.shelf_1
-    - light.shelf_2
-    - light.shelf_3
+    - group.bookshelves
 
 living_lights:
   name: "Living Lights"
@@ -61,6 +59,9 @@ office:
   entities:
     - light.mancave_mqtt
     - light.office_ceiling
+
+Kitchen:
+    - light.kitchen_ceiling_level
 
 master:
   name: "Master"
@@ -102,6 +103,14 @@ Climate:
     - sensor.master_temperature
     - sensor.master_humidity
 
+Batteries:
+    - sensor.temphum_sensor_bathroom
+    - sensor.temphum_sensor_kitchen
+    - sensor.temphum_sensor_master
+
+
+
+
 ######################################
 #Views
 ######################################
@@ -113,6 +122,7 @@ default_view:
     - group.livingroom
     - group.presets
     - group.toon
+    - group.kitchen
     - group.office
     - group.master
     - camera.buienradar
@@ -157,6 +167,7 @@ kitchen_view:
   entities:
     - sensor.kitchen_temperature
     - sensor.kitchen_humidity
+    - light.kitchen_ceiling_level
 
 
 ######################################
@@ -201,7 +212,6 @@ outside_view:
   - switch.front_door_light
 
 
-
 ######################################
 system_view:
   name: "System"
@@ -209,11 +219,11 @@ system_view:
   icon: mdi:settings
   entities:
     - group.all_devices
+    - group.all_switches
+    - group.family
     - group.usage
+    - group.batteries
     - group.climate
     - group.all_automations
     - group.all_scripts
-    - device_tracker.borg
-    - device_tracker.skynet_2
-    - device_tracker.raspberrypi
-    - device_tracker.hassbian
+    - binary_sensor.doorwindow_detector_sensor

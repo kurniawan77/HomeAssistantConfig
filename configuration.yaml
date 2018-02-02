@@ -20,6 +20,9 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+### Enable Map in panel
+map:
+
 
 ### Show links to resources in log and frontend
 #introduction:
@@ -322,11 +325,21 @@ mqtt:
 device_tracker:
   - platform: owntracks_http
 
-  - platform: asuswrt
-    host: 192.168.129.1
-    username: !secret asuswrt_username
-    password: !secret asuswrt_password
-    track_new_devices: true
+  - platform: nmap_tracker
+    hosts: 192.168.129.0/24
+    track_new_devices: yes
+    interval_seconds: 15
+    home_interval: 10
+    exclude:
+      - 192.168.129.1
+      - 192.168.129.115
+    scan_options: " --privileged -sP "
+
+#  - platform: asuswrt
+#    host: 192.168.129.1
+#    username: !secret asuswrt_username
+#    password: !secret asuswrt_password
+#    
 
 ### 433Mhz RF Bridge 
 rflink:

@@ -13,8 +13,6 @@ light.mancave:
   hidden: true
 light.mancave_mqtt:
   friendly_name: Mancave
-device_tracker.24df6a78c050:
-  icon: mdi:cellphone
 light.dining_table:
   hidden: true
 light.dining_table_mqtt:
@@ -41,7 +39,7 @@ scene.toon_home:
 scene.toon_comfort:
   friendly_name: Comfort
   icon: mdi:sofa
-binary_sensor.burner_status:
+sensor.burner_status:
   friendly_name: Burner
 script.goodnight:
   icon: mdi:hotel
@@ -51,35 +49,60 @@ scene.living_lights_medium:
   icon: mdi:brightness-6
 scene.living_lights_bright:
   icon: mdi:brightness-7
-device_tracker.desktop2m662m4:
-  friendly_name: Dell XPS-15
+device_tracker.24df6a78c050:
+  icon: mdi:cellphone-wireless
+device_tracker.desktop2m662m4local:
   icon: mdi:laptop
-device_tracker.chromecast:
+device_tracker.chromecastlocal:
   icon: mdi:cast
-device_tracker.epsonprinter:
+device_tracker.epsonprinterlocal:
   icon: mdi:printer
-device_tracker.7cdd90e49bb8:
+device_tracker.7cdd90e49bb8local:
   icon: mdi:television-box
-device_tracker.latituded630:
+device_tracker.latituded630local:
   icon: mdi:laptop
-device_tracker.media01:
+device_tracker.media01local:
   icon: mdi:kodi
-device_tracker.android49dd192209c55554:
+device_tracker.android68627440b1a39a6flocal:
   icon: mdi:tablet
-device_tracker.skynet_2:
+device_tracker.skynetlocal:
   icon: mdi:windows
-device_tracker.samsung_ue60ku6000:
+device_tracker.samsung_ue60ku6000local:
   icon: mdi:youtube-tv
-device_tracker.borg:
+device_tracker.borglocal:
   icon: mdi:ubuntu
-device_tracker.raspberrypi:
+device_tracker.raspberrypilocal:
   icon: mdi:raspberrypi
-device_tracker.elitebook:
+device_tracker.elitebooklocal:
+  friendly_name: Elitebook
   icon: mdi:laptop
-device_tracker.desktoptu3b7ps:
+device_tracker.desktoptu3b7pslocal:
   friendly_name: Lenovo YOGA
   icon: mdi:laptop
-device_tracker.hassbian:
-  icon: mdi:raspberrypi
 light.kitchen_ceiling_level:
-  friendly_name: Pendant Lights
+  friendly_name: Pendants
+device_tracker.eneco00106791:
+  friendly_name: Toon
+  icon: mdi:tablet
+group.toon:
+  icon: mdi:tablet
+climate.toon_van_eneco:
+  icon: mdi:tablet
+device_tracker.irwan_angler:
+  friendly_name: Irwan Nexus 6P
+device_tracker.esp_0ed54dlocal:
+  icon: mdi:wifi
+device_tracker.esp_0ed596local:
+  icon: mdi:led-on
+device_tracker.esp_1eef39local:
+  icon: mdi:led-on
+device_tracker.eneco00106791local:
+  icon: mdi:tablet
+device_tracker.htconexlocal:
+  icon: mdi:cellphone-wireless
+device_tracker.wemosta6586local:
+  icon: mdi:theme-light-dark
+device_tracker.sonoff6021local:
+  icon: mdi:flash
+device_tracker.leroy_hammerhead:
+  icon: mdi:crosshairs-gps

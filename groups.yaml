@@ -5,13 +5,13 @@
 family:
   name: "Awesome People"
   entities:
-    - device_tracker.24df6a78c050
+    - device_tracker.24df6a78c050local
     - device_tracker.irwan_angler
-    - device_tracker.lgnexus5x
-    - device_tracker.nexus5xshanell
-    - device_tracker.htconex
-    - device_tracker.iphonen
-    - device_tracker.iphoney
+    - device_tracker.lgnexus5xlocal
+    - device_tracker.nexus5xshanelllocal
+    - device_tracker.nexus5local
+    - device_tracker.iphonenlocal
+    - device_tracker.iphoneylocal
 
 bookshelves:
   name: "Bookshelves"
@@ -76,7 +76,7 @@ toon:
   name: "Toon"
   control: hidden
   entities:
-    - binary_sensor.burner_status
+    - sensor.burner_status
     - climate.toon_van_eneco
     - scene.Toon_Comfort
     - scene.Toon_Home
@@ -127,16 +127,11 @@ default_view:
     - group.master
     - camera.buienradar
     - device_tracker.irwan_angler
-    - device_tracker.lgnexus5x
-    - device_tracker.nexus5xshanell
-    - device_tracker.htconex
-    - device_tracker.elitebook
-    - device_tracker.iphonen
-    - device_tracker.iphoney
-    - device_tracker.android49dd192209c55554
-    - device_tracker.latituded630
-    - device_tracker.desktop2m662m4
-    - device_tracker.desktoptu3b7ps
+    - device_tracker.lgnexus5xlocal
+    - device_tracker.nexus5xshanelllocal
+    - device_tracker.nexus5local
+    - device_tracker.iphonenlocal
+    - device_tracker.iphoneylocal
 
 
 ######################################
@@ -155,10 +150,10 @@ livingroom_view:
     - sensor.illuminance
     - sensor.livingroom_temperature
     - sensor.livingroom_humidity
-    - device_tracker.media01
-    - device_tracker.chromecast
-    - device_tracker.samsung_ue60ku6000
-    - device_tracker.7cdd90e49bb8
+    - device_tracker.media01local
+    - device_tracker.chromecastlocal
+    - device_tracker.samsung_ue60ku6000local
+    - device_tracker.7cdd90e49bb8local
 
 ######################################
 kitchen_view:
@@ -178,7 +173,7 @@ office_view:
     - light.office_ceiling
     - light.mancave_mqtt
     - binary_sensor.mancave_motion
-    - device_tracker.epsonprinter
+    - device_tracker.epsonprinterlocal
     - sensor.office_temperature
     - sensor.office_humidity
 
@@ -218,9 +213,9 @@ system_view:
   view: yes
   icon: mdi:settings
   entities:
+    - group.family
     - group.all_devices
     - group.all_switches
-    - group.family
     - group.usage
     - group.batteries
     - group.climate

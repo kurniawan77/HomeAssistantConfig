@@ -20,11 +20,14 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+
 ### Enable Map in panel
 map:
 
+
 ### Show links to resources in log and frontend
 #introduction:
+
 
 ### Enables python scripts as service
 python_script:
